@@ -19,6 +19,8 @@ init
     vars.isLoading = true;
 	vars.lastMap = "";
 	vars.lastMapOld = "";
+	vars.previousMap = "";
+	vars.previousPreviousMap = "";
 }
 
 
@@ -36,6 +38,8 @@ split
 		return true;
 	}
 	if (settings["mapSplits"] && vars.lastMap != vars.lastMapOld && vars.lastMap.Length > 1 && vars.lastMapOld.Length > 1) {
+		vars.previousPreviousMap = vars.previousMap;
+		vars.previousMap = vars.lastMapOld;
 		if ("bhm600ar_fade_harrowing".Contains(vars.lastMapOld) && "bhm100ar_tower_level_1".Contains(vars.lastMap)) {
 			return true;
 		}
@@ -62,8 +66,8 @@ split
 			"den922ar_wide_2".Contains(vars.lastMapOld)) && "den02al_den_market".Contains(vars.lastMap)) {
 			return true;
 		}
-		// Only do this when going into eamon from den600ar_landsmeet_chamber
-		if ("den07al_eamon".Contains(vars.lastMapOld) && "den02al_den_market".Contains(vars.lastMap)) {
+		if ("den07al_eamon".Contains(vars.lastMapOld) && "den02al_den_market".Contains(vars.lastMap)
+			&& "den600ar_landsmeet_chamber".Contains(vars.previousPreviousMap)) {
 			return true;
 		}
 		if ("cli03al_redcliffe_castle".Contains(vars.lastMapOld) && "den02al_den_market".Contains(vars.lastMap)) {
