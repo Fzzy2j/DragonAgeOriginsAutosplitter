@@ -52,7 +52,10 @@ split
 		if ("pre440ar_tower_level_4".Contains(vars.lastMapOld) && "pre02al_korcari_wilds".Contains(vars.lastMap)) {
 			return true;
 		}
-		if ("cam104ar_camp_arch1".Contains(vars.lastMapOld) && "den02al_den_market".Contains(vars.lastMap)) {
+		if (("cam104ar_camp_arch1".Contains(vars.lastMapOld) || 
+			"ran300ar_plains_darkspawn_3".Contains(vars.lastMapOld) || 
+			"ran270ar_forest_ambush".Contains(vars.lastMapOld) || 
+			"ran700ar_merchant".Contains(vars.lastMapOld)) && "den02al_den_market".Contains(vars.lastMap)) {
 			return true;
 		}
 		if (("den400ar_fort".Contains(vars.lastMapOld) || 
